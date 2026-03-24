@@ -1,0 +1,1 @@
+export const TWENTY_FIVE_ITEMS_PER_PAGE = 25

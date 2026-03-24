@@ -1,0 +1,11 @@
+node_modules
+.DS_Store
+dist-ssr
+*.local
+private_keys.json
+*.log
+dist/
+*.cache
+./src/Config/test.ts
+src/Config/test.ts
+coverage

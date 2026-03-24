@@ -1,0 +1,55 @@
+{
+  "rules": {
+    "latestVersion": {
+      ".read": true,
+      ".write": false
+    },
+    "expoOTAVersion": {
+      ".read": true,
+      ".write": false
+    },
+    "businesses": {
+      ".read": "auth != null",
+    	"$uid": {
+        ".read": "auth != null",
+        ".write": "$uid === auth.uid"
+    	}
+    },
+    "licenses": {
+      ".read": true,
+      ".write": "auth != null"
+    },
+    "pushNotificationTokens": {
+      ".read": true,
+      ".write": true
+    },
+    "specSheets": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "users": {
+      "$uid": {
+        "profiles": {
+          ".read": "auth != null", //This is so that friends can see their profile information
+          ".write": "$uid === auth.uid"
+        },
+        "receipts": {
+          ".read": "$uid === auth.uid",
+          ".write": "$uid === auth.uid"
+        },
+        "savedSpecSheets": {
+          ".read": "$uid === auth.uid",
+          ".write": "$uid === auth.uid"
+        },
+        "settings": {
+          ".read": "$uid === auth.uid",
+          ".write": "$uid === auth.uid"
+        },
+      }
+    },
+    "phoneNumbers": {
+      ".read": true,
+      ".write": true
+    }
+  }
+}

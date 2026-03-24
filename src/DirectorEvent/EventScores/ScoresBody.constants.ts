@@ -1,0 +1,1 @@
+export const HUNDRED_ITEMS_PER_PAGE = 100
