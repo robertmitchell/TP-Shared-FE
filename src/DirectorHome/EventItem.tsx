@@ -1,13 +1,7 @@
-import {
-  CalendarIcon,
-  MapPinIcon,
-  UsersIcon,
-  ChevronRightIcon,
-} from '@heroicons/react/20/solid'
+import { CalendarIcon, MapPinIcon, UsersIcon } from '@heroicons/react/20/solid'
 import { Link } from 'react-router-dom'
 
 import type { EventDetails } from '@/Common/Common.types'
-
 import { getStatusColors } from '@/Common/Utils/UtilityFunctions'
 
 type Props = {
@@ -15,61 +9,43 @@ type Props = {
   isPlayer?: boolean
 }
 
-/**
- * A single event in the event list
- */
 export const EventItem = (props: Props) => {
   const { eventDetails, isPlayer = false } = props
-
   const { date, id, location, name, numParticipants, status } = eventDetails
-
   const route = isPlayer ? `event/${id}` : `/manage/event/${id}`
 
   return (
-    <Link to={route} state={eventDetails} className="block hover:bg-gray-50">
-      <div className="px-4 py-4 sm:px-6">
-        <div className="flex items-center justify-between">
-          <p className="text-md flex font-medium text-black truncate items-center">
-            {name}{' '}
-            <ChevronRightIcon
-              className="shrink-0 ml-1.5 h-6 w-5"
-              aria-hidden="true"
-            />
-          </p>
-          <div className="ml-2 shrink-0 flex">
-            <p
-              className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColors(
-                status,
-              )}`}
-            >
-              {status}
-            </p>
+    <Link to={route} state={eventDetails} className="block group cursor-pointer">
+      <div className="px-6 py-5 hover:bg-amber-50 hover:shadow-sm transition-all duration-150 border-b border-gray-100 last:border-0">
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-3 mb-2">
+              <p className="text-base font-bold text-gray-900 group-hover:text-amber-600 transition-colors truncate">
+                {name}
+              </p>
+              <span className={`shrink-0 px-2 py-0.5 text-xs font-semibold rounded-full ${getStatusColors(status)}`}>
+                {status}
+              </span>
+            </div>
+            <div className="flex flex-wrap gap-4 text-xs text-gray-500">
+              <span className="flex items-center gap-1">
+                <CalendarIcon className="h-3.5 w-3.5 text-gray-400" />
+                {date || 'No date set'}
+              </span>
+              <span className="flex items-center gap-1">
+                <MapPinIcon className="h-3.5 w-3.5 text-gray-400" />
+                {location || 'No location set'}
+              </span>
+              <span className="flex items-center gap-1">
+                <UsersIcon className="h-3.5 w-3.5 text-gray-400" />
+                {numParticipants} participants
+              </span>
+            </div>
           </div>
-        </div>
-        <div className="mt-2 sm:flex sm:justify-between">
-          <div className="sm:flex">
-            <p className="flex items-center text-sm text-gray-500">
-              <CalendarIcon
-                className="shrink-0 mr-1.5 h-5 w-5 text-gray-400"
-                aria-hidden="true"
-              />
-              {date ? date : 'N/A'}
-            </p>
-            <p className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0 sm:ml-6">
-              <MapPinIcon
-                className="shrink-0 mr-1.5 h-5 w-5 text-gray-400"
-                aria-hidden="true"
-              />
-              {location ? location : 'N/A'}
-            </p>
-          </div>
-          <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
-            <UsersIcon
-              className="shrink-0 mr-1.5 h-5 w-5 text-gray-400"
-              aria-hidden="true"
-            />
-
-            <p>{numParticipants} participants</p>
+          <div className="shrink-0 flex items-center">
+            <span className="hidden sm:inline text-xs font-medium text-amber-600 group-hover:underline">
+              Manage →
+            </span>
           </div>
         </div>
       </div>

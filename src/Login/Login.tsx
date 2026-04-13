@@ -22,6 +22,7 @@ export const Login = () => {
   const [formData, setFormData] = useImmer(getDefaultFormData)
   const [isPlayer, setIsPlayer] = useState(true)
   const [showPass, setShowPass] = useState(false)
+  const [remember, setRemember] = useState(false)
 
   useEffect(() => {
     if (formData.success.length > 0) {
@@ -48,7 +49,7 @@ export const Login = () => {
           <div className="mx-auto w-full max-w-sm lg:w-96">
 
             <div className="mb-8">
-              <h2 className="text-3xl font-extrabold text-gray-900">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 leading-tight">
                 Welcome back to Tournament Planet
               </h2>
               <p className="mt-2 text-sm text-gray-500 max-w-xs">
@@ -56,7 +57,7 @@ export const Login = () => {
               </p>
             </div>
 
-            <div className="space-y-5">
+            <div className="space-y-5 bg-white shadow-lg rounded-lg p-6">
 
               <div>
                 <p className="text-sm font-medium text-gray-700 mb-2">Login as:</p>
@@ -119,22 +120,36 @@ export const Login = () => {
                   type={showPass ? 'text' : 'password'}
                   value={formData.password}
                 />
-                <div
-                  className="absolute top-8 right-5 cursor-pointer"
+                <button
+                  type="button"
+                  aria-pressed={showPass}
+                  aria-label={showPass ? 'Hide password' : 'Show password'}
+                  className="absolute top-8 right-5 p-1 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   onClick={() => setShowPass(!showPass)}
                 >
                   {showPass ? (
-                    <EyeIcon className="shrink-0 h-4 w-4" aria-hidden="true" />
+                    <EyeIcon className="shrink-0 h-4 w-4 text-gray-600" aria-hidden="true" />
                   ) : (
-                    <EyeSlashIcon className="shrink-0 h-4 w-4" aria-hidden="true" />
+                    <EyeSlashIcon className="shrink-0 h-4 w-4 text-gray-600" aria-hidden="true" />
                   )}
-                </div>
+                </button>
               </div>
 
-              <div className="text-right">
-                <span className="text-xs text-gray-400 hover:text-gray-600 cursor-pointer">
+              <div className="flex items-center justify-between">
+                <label className="flex items-center gap-2 text-sm">
+                  <input
+                    aria-label="Remember me"
+                    type="checkbox"
+                    checked={remember}
+                    onChange={() => setRemember((v) => !v)}
+                    className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                  />
+                  <span className="text-sm text-gray-700">Remember me</span>
+                </label>
+
+                <Link to="/forgot-password" className="text-xs text-indigo-600 hover:text-indigo-700">
                   Forgot your password?
-                </span>
+                </Link>
               </div>
 
               <SupplementalFields />
