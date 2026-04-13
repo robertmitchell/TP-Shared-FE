@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Switch } from '@headlessui/react'
-import cn from 'classnames'
 import { useImmer } from 'use-immer'
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/20/solid'
 
@@ -20,15 +18,11 @@ import { LoadingModal } from '@/Common/Components/LoadingModal'
 import { SupplementalFields } from './SupplementalFields'
 import { TextInput } from '@/Common/Components/TextInput'
 
-/**
- * Login page
- */
 export const Login = () => {
   const [formData, setFormData] = useImmer(getDefaultFormData)
   const [isPlayer, setIsPlayer] = useState(true)
   const [showPass, setShowPass] = useState(false)
 
-  // Navigate to the user correctly after success
   useEffect(() => {
     if (formData.success.length > 0) {
       if (formData.userType === UserType.Player) {
@@ -50,147 +44,132 @@ export const Login = () => {
       <Header />
 
       <div className="min-h-full flex">
-        <div className="flex-1 flex flex-col justify-center py-8 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+        <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="mx-auto w-full max-w-sm lg:w-96">
-            <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-              Sign in to your account
-            </h2>
 
-            <div className="mt-8 mb-2">
-              <div className="mt-6">
-                <div
-                  className="space-y-6"
-                  onSubmit={(e) => {
-                    e.preventDefault()
-                  }}
-                >
-                  <Switch.Group as="div" className="flex items-center">
-                    <Switch
-                      checked={isPlayer}
-                      onChange={setIsPlayer}
-                      className={cn(
-                        isPlayer ? 'bg-indigo-600' : 'bg-amber-400',
-                        'relative inline-flex shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500',
-                      )}
-                    >
-                      <span
-                        aria-hidden="true"
-                        className={cn(
-                          isPlayer ? 'translate-x-5' : 'translate-x-0',
-                          'pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow ring-0 transition ease-in-out duration-200',
-                        )}
-                      />
-                    </Switch>
-                    <Switch.Label as="span" className="ml-3">
-                      <span className="text-sm font-medium text-gray-900">
-                        I'm {isPlayer ? 'a' : 'an'}
-                      </span>
-                      <span
-                        className={cn(
-                          'text-xl font-medium',
-                          isPlayer ? 'text-indigo-600' : 'text-amber-400',
-                        )}
-                      >
-                        {isPlayer ? ' Player' : ' Event Director'}
-                      </span>
-                    </Switch.Label>
-                  </Switch.Group>
-
-                  <div>
-                    <TextInput
-                      isEditing
-                      labelText="Email address"
-                      onChange={(e) => {
-                        setFormData((draft) => {
-                          draft.email = e.target.value
-                        })
-                      }}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                          signInEmailUser(isPlayer, formData, setFormData)
-                        }
-                      }}
-                      type="email"
-                      value={formData.email}
-                    />
-                  </div>
-
-                  <div className="relative">
-                    <TextInput
-                      className="mr-2"
-                      isEditing
-                      labelText="Password"
-                      onChange={(e) => {
-                        setFormData((draft) => {
-                          draft.password = e.target.value
-                        })
-                      }}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                          signInEmailUser(isPlayer, formData, setFormData)
-                        }
-                      }}
-                      type={showPass ? 'text' : 'password'}
-                      value={formData.password}
-                    />
-                    <div
-                      className="absolute top-8 right-5 cursor-pointer"
-                      onClick={() => setShowPass(!showPass)}
-                    >
-                      {showPass ? (
-                        <EyeIcon
-                          className="shrink-0 h-4 w-4"
-                          aria-hidden="true"
-                        />
-                      ) : (
-                        <EyeSlashIcon
-                          className="shrink-0 h-4 w-4"
-                          aria-hidden="true"
-                        />
-                      )}
-                    </div>
-                  </div>
-
-                  <SupplementalFields />
-
-                  <div>
-                    <ErrorAndSuccess
-                      clearMessageFn={() =>
-                        setFormData((draft) => {
-                          draft.error = ''
-                          draft.success = ''
-                        })
-                      }
-                      error={formData.error}
-                      success={formData.success}
-                    />
-
-                    <Button
-                      fullWidth
-                      onClick={() =>
-                        signInEmailUser(isPlayer, formData, setFormData)
-                      }
-                    >
-                      Sign in
-                    </Button>
-                  </div>
-                </div>
-              </div>
+            <div className="mb-8">
+              <h2 className="text-3xl font-extrabold text-gray-900">
+                Welcome back to Tournament Planet
+              </h2>
+              <p className="mt-2 text-sm text-gray-500 max-w-xs">
+                Sign in to access your tournaments, track standings, and compete in Bowling Poker events.
+              </p>
             </div>
 
-            <p>
-              Not a player yet?
-              <Button variant="link">
-                <Link to="/register/player/">Sign up now</Link>
-              </Button>
-            </p>
+            <div className="space-y-5">
 
-            <p>
-              Not a director yet?
-              <Button variant="link">
-                <Link to="/register/director/">Sign up now</Link>
+              <div>
+                <p className="text-sm font-medium text-gray-700 mb-2">Login as:</p>
+                <div className="flex items-center gap-6">
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="accountType"
+                      checked={isPlayer}
+                      onChange={() => setIsPlayer(true)}
+                      className="accent-indigo-600"
+                    />
+                    <span className="text-sm font-medium text-gray-900">Player</span>
+                  </label>
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="accountType"
+                      checked={!isPlayer}
+                      onChange={() => setIsPlayer(false)}
+                      className="accent-amber-400"
+                    />
+                    <span className="text-sm font-medium text-gray-900">Director</span>
+                  </label>
+                </div>
+              </div>
+
+              <TextInput
+                isEditing
+                labelText="Email address"
+                onChange={(e) => {
+                  setFormData((draft) => {
+                    draft.email = e.target.value
+                  })
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    signInEmailUser(isPlayer, formData, setFormData)
+                  }
+                }}
+                type="email"
+                value={formData.email}
+              />
+
+              <div className="relative">
+                <TextInput
+                  className="mr-2"
+                  isEditing
+                  labelText="Password"
+                  onChange={(e) => {
+                    setFormData((draft) => {
+                      draft.password = e.target.value
+                    })
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      signInEmailUser(isPlayer, formData, setFormData)
+                    }
+                  }}
+                  type={showPass ? 'text' : 'password'}
+                  value={formData.password}
+                />
+                <div
+                  className="absolute top-8 right-5 cursor-pointer"
+                  onClick={() => setShowPass(!showPass)}
+                >
+                  {showPass ? (
+                    <EyeIcon className="shrink-0 h-4 w-4" aria-hidden="true" />
+                  ) : (
+                    <EyeSlashIcon className="shrink-0 h-4 w-4" aria-hidden="true" />
+                  )}
+                </div>
+              </div>
+
+              <div className="text-right">
+                <span className="text-xs text-gray-400 hover:text-gray-600 cursor-pointer">
+                  Forgot your password?
+                </span>
+              </div>
+
+              <SupplementalFields />
+
+              <ErrorAndSuccess
+                clearMessageFn={() =>
+                  setFormData((draft) => {
+                    draft.error = ''
+                    draft.success = ''
+                  })
+                }
+                error={formData.error}
+                success={formData.success}
+              />
+
+              <Button
+                fullWidth
+                onClick={() => signInEmailUser(isPlayer, formData, setFormData)}
+              >
+                Sign In
               </Button>
-            </p>
+
+              <div className="pt-2 border-t border-gray-100">
+                <p className="text-sm text-gray-500 mb-1">New to Tournament Planet?</p>
+                <div className="flex flex-col gap-1">
+                  <Button variant="link">
+                    <Link to="/register/player/">Create a Player account</Link>
+                  </Button>
+                  <Button variant="link">
+                    <Link to="/register/director/">Create a Director account</Link>
+                  </Button>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
 
@@ -202,6 +181,16 @@ export const Login = () => {
             className="absolute inset-0 h-full w-full object-cover"
             src="https://images.unsplash.com/photo-1505904267569-f02eaeb45a4c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1908&q=80"
           />
+          <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center p-12">
+            <p className="text-white text-5xl font-bold leading-tight">
+              Run Tournaments.<br />
+              Track Results.<br />
+              Compete Smarter.
+            </p>
+            <p className="text-gray-300 text-lg mt-4">
+              The all-in-one platform for bowling tournament directors and players.
+            </p>
+          </div>
         </div>
       </div>
     </>
