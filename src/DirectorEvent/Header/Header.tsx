@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom'
 
 import { eventTabs } from './Header.constants'
 import type { EventData, SetState } from '@/Common/Common.types'
+
 import { enableGenerators, getTabIndex, getTabValue } from './Header.helpers'
+
+import { Button } from '@/Common/Components/Button'
 import { Dropdown } from '@/Common/Components/Dropdown'
 
 type Props = {
@@ -14,20 +17,29 @@ type Props = {
   setCurrentTab: SetState<number>
 }
 
+/**
+ * Top of the Event page
+ */
 export const Header = (props: Props) => {
   const { currentTab, eventData, isPlayer = false, setCurrentTab } = props
+
   const [count, setCount] = useState(0)
 
+  // TODO DELETE THIS
   useEffect(() => {
-    if (count === 5) enableGenerators(eventData)
+    if (count === 5) {
+      enableGenerators(eventData)
+    }
   }, [count])
 
   const destination = isPlayer ? '/home/' : '/manage/'
+
+  // TODO REMOVE THIS
   const { generatorsEnabled } = eventData.eventDetails
   const allTabs = generatorsEnabled ? [...eventTabs, 'Generator'] : eventTabs
 
   return (
-    <header className="bg-white border-b border-gray-200">
+    <header className="relative">
       {!isPlayer && (
         <div
           className="absolute right-0 top-0 cursor-default text-xs text-indigo-200"
@@ -37,44 +49,47 @@ export const Header = (props: Props) => {
         </div>
       )}
 
-      <div className="px-6 pt-5 pb-0">
-        <Link
-          to={destination}
-          className="inline-flex items-center text-sm text-gray-500 hover:text-amber-600 transition-colors mb-3"
-        >
-          ← Back to Dashboard
-        </Link>
+      <div className="m-2">
+        <Button>
+          <Link to={destination}>Return to Dashboard</Link>
+        </Button>
 
-        <h1 className="text-2xl font-bold text-gray-900 mb-4">
+        <h1 className="text-2xl font-semibold mt-4">
           {eventData.eventDetails.name}
         </h1>
+      </div>
 
-        {/* Mobile dropdown */}
+      <div className="m-2">
         <Dropdown
           isEditing
           labelText="Menu"
           items={allTabs}
           value={getTabValue(currentTab)}
           onChange={(e) => setCurrentTab(getTabIndex(e.target.value))}
-          containerClassName="sm:hidden mb-3"
+          containerClassName="sm:hidden"
         />
 
-        {/* Desktop pill tabs */}
-        <div className="hidden sm:flex gap-1 overflow-x-auto">
-          {allTabs.map((tab, index) => (
-            <button
-              key={`${tab}_${index}`}
-              onClick={() => setCurrentTab(index)}
-              className={cn(
-                'whitespace-nowrap px-4 py-2 text-sm font-medium rounded-t-lg border-b-2 transition-colors',
-                currentTab === index
-                  ? 'border-amber-400 text-amber-600 bg-amber-50'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50',
-              )}
-            >
-              {tab}
-            </button>
-          ))}
+        <div className="hidden sm:block">
+          <div className="border-b border-gray-200">
+            <nav className="-mb-px flex" aria-label="Tabs">
+              {allTabs.map((tab, index) => (
+                <Button
+                  key={`${tab}_${index}`}
+                  variant="text"
+                  onClick={() => setCurrentTab(index)}
+                  className={cn(
+                    'whitespace-nowrap font-medium text-lg ml-0 p-6 rounded-b-none',
+                    currentTab === index
+                      ? 'text-white bg-black hover:text-white'
+                      : 'text-gray-500 hover:text-gray-700 hover:border-gray-300',
+                  )}
+                  aria-current={currentTab === index ? 'true' : undefined}
+                >
+                  {tab}
+                </Button>
+              ))}
+            </nav>
+          </div>
         </div>
       </div>
     </header>
