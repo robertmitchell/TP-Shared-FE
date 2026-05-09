@@ -16,11 +16,11 @@ Mystery - Games played will apply to the bracket in an uncertain order. IE: Brac
 *NOTE: If you choose "Mystery" you will have to apply the games to all rounds yourself.`,
   TYPE: `The type of bracket determines some of the details of how the bracket operates.
 
-Eliminator - All players are matched together. The top half of scorers advance to the next round.
+Singles - 8 Bowlers bowl in a standard bracket. Losing score is out. 
+Eliminator: All of the bowlers who compete have their scores listed. The list is cut in the half, with the top half advancing and the bottom half being eliminated. This can be in scratch or handicap variety.
+Doubles Brackets - Two people compete as a team. 
+Team Brackets  - Three people compete as a team.
 
-Singles - Players compete individually.
-
-Double Elimination Singles - Players compete individually but must lose twice to lose completely.
-
-Teams - Players compete as a group.`,
+Double Elimination - People compete until they lose twice. Four people can compete per bracket in a three game set.
+Super Bracket - 64 people compete in a bracket that lasts 6 games. Ideal for marathon tournaments.`,
 }

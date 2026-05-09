@@ -13,6 +13,7 @@ import {
   bracketNumPlayersDES,
   bracketOptions,
   bracketScoringTypes,
+  bracketSportTypes,
 } from './BracketForm.types'
 import { BRACKET_TEXT } from '@/CreateEvent/CreateEvent.constants'
 
@@ -179,15 +180,17 @@ export const BracketForm = (props: Props) => {
               }
             />
 
-            <TextInput
+            <RadioGroup
               isEditing={isEditing}
               labelText="Sport"
+              items={bracketSportTypes}
               value={eventData.brackets[bIndex].sport}
               onChange={(e) =>
                 setEventData((draft) => {
                   draft.brackets[bIndex].sport = e.target.value
                 })
               }
+              vertical
             />
 
             <BoxInput

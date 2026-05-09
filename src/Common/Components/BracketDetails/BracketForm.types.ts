@@ -53,23 +53,34 @@ export enum BracketStatus {
 }
 
 export type BracketType =
-  | 'Double Elimination Singles'
   | 'Eliminator'
   | 'Singles'
+  | 'Double Elimination Singles'
   | 'Teams'
+  | 'Double Elimination'
+  | 'Super Bracket'
 
 export const bracketOptions = [
   // 'Baker'
-  'Double Elimination Singles',
   'Eliminator',
   'Singles',
+  'Double Elimination Singles',
   'Teams',
+  'Double Elimination',
+  'Super Bracket'
 ]
 
 export const bracketNumPlayers = ['2', '4', '8', '16', '32', '64', '128', '256']
 export const bracketNumPlayersDES = ['2', '4', '8']
 
 export const bracketScoringTypes = ['Standard', 'Reverse', 'Mystery']
+
+export const bracketSportTypes = [
+  'Standard 8 man 1/2/3',
+  'Eliminator',
+  'Reverse',
+  'Mystery Score Brackets',
+]
 
 export type BracketWeb = {
   id: string
