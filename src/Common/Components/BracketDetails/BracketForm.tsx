@@ -13,7 +13,7 @@ import {
   bracketNumPlayersDES,
   bracketOptions,
   bracketScoringTypes,
-  bracketSportTypes,
+  bracketFormatTypes,
 } from './BracketForm.types'
 import { BRACKET_TEXT } from '@/CreateEvent/CreateEvent.constants'
 
@@ -53,7 +53,7 @@ export const BracketForm = (props: Props) => {
   )
 
   const isDES =
-    eventData.brackets[bIndex]?.bracketType === 'Double Elimination Singles'
+    eventData.brackets[bIndex]?.bracketType === 'Double Elimination'
   const isOpen =
     eventData.brackets[bIndex]?.status === BracketStatus.Not_Shuffled
 
@@ -182,12 +182,12 @@ export const BracketForm = (props: Props) => {
 
             <RadioGroup
               isEditing={isEditing}
-              labelText="Sport"
-              items={bracketSportTypes}
-              value={eventData.brackets[bIndex].sport}
+              labelText="Format"
+              items={bracketFormatTypes}
+              value={eventData.brackets[bIndex].format}
               onChange={(e) =>
                 setEventData((draft) => {
-                  draft.brackets[bIndex].sport = e.target.value
+                  draft.brackets[bIndex].format = e.target.value
                 })
               }
               vertical
@@ -336,7 +336,7 @@ export const BracketForm = (props: Props) => {
           </div>
 
           {eventData.brackets[bIndex].bracketType ===
-            'Double Elimination Singles' && (
+            'Double Elimination' && (
             <div className="grid grid-cols-6 gap-6 my-4 mx-2 sm:mx-0">
               <TextInput
                 type="number"

@@ -78,7 +78,7 @@ export const BracketWeb = (props: Props) => {
             <div className="flex">
               <ResetButton bIndex={bIndex} eventData={eventData} />
 
-              {bracketType !== 'Double Elimination Singles' && (
+              {bracketType !== 'Double Elimination' && (
                 <RollbackButton
                   bIndex={bIndex}
                   eventData={eventData}
@@ -113,7 +113,7 @@ export const BracketWeb = (props: Props) => {
             <div className="flex">
               <ResetButton bIndex={bIndex} eventData={eventData} />
 
-              {bracketType !== 'Double Elimination Singles' && (
+              {bracketType !== 'Double Elimination' && (
                 <RollbackButton
                   bIndex={bIndex}
                   eventData={eventData}

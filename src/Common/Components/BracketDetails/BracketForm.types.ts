@@ -40,7 +40,7 @@ export type BracketFormData = {
   prizes: string
   rules: string
   secondPayout: number
-  sport: string
+  format: string
   status: BracketStatus
   teamCount: number
   thirdPayout: number
@@ -53,21 +53,21 @@ export enum BracketStatus {
 }
 
 export type BracketType =
-  | 'Eliminator'
   | 'Singles'
-  | 'Double Elimination Singles'
+  | 'Eliminator'
+  | 'Doubles'
   | 'Teams'
   | 'Double Elimination'
   | 'Super Bracket'
 
 export const bracketOptions = [
   // 'Baker'
-  'Eliminator',
   'Singles',
-  'Double Elimination Singles',
+  'Eliminator',
+  'Doubles',
   'Teams',
   'Double Elimination',
-  'Super Bracket'
+  'Super Bracket',
 ]
 
 export const bracketNumPlayers = ['2', '4', '8', '16', '32', '64', '128', '256']
@@ -75,7 +75,7 @@ export const bracketNumPlayersDES = ['2', '4', '8']
 
 export const bracketScoringTypes = ['Standard', 'Reverse', 'Mystery']
 
-export const bracketSportTypes = [
+export const bracketFormatTypes = [
   'Standard 8 man 1/2/3',
   'Eliminator',
   'Reverse',
