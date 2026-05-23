@@ -41,6 +41,7 @@ export type BracketFormData = {
   rules: string
   secondPayout: number
   format: string
+  sport: string
   status: BracketStatus
   teamCount: number
   thirdPayout: number
