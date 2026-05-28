@@ -80,7 +80,7 @@ export const AliveLisPlayerRow = (props: Props) => {
 
       <SecondPlace results={results} />
 
-      {bracketType === 'Double Elimination' && (
+      {bracketType === 'Double Elimination Singles' && (
         <>
           <ThirdPlace results={results} />
           <FourthPlace results={results} />

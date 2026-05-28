@@ -58,7 +58,7 @@ export type BracketType =
   | 'Eliminator'
   | 'Doubles'
   | 'Teams'
-  | 'Double Elimination'
+  | 'Double Elimination Singles'
   | 'Super Bracket'
 
 export const bracketOptions = [
@@ -67,7 +67,7 @@ export const bracketOptions = [
   'Eliminator',
   'Doubles',
   'Teams',
-  'Double Elimination',
+  'Double Elimination Singles',
   'Super Bracket',
 ]
 

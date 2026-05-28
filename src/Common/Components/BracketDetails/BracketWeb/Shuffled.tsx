@@ -109,7 +109,7 @@ export const Shuffled = (props: Props) => {
       )}
 
       {activeRound > 0 &&
-        bracketType === 'Double Elimination' &&
+        bracketType === 'Double Elimination Singles' &&
         loserWeb !== null && (
           <Web
             loserBracket

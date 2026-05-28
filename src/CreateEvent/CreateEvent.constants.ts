@@ -21,6 +21,6 @@ Eliminator: All of the bowlers who compete have their scores listed. The list is
 Doubles Brackets - Two people compete as a team. 
 Team Brackets  - Three people compete as a team.
 
-Double Elimination - People compete until they lose twice. Four people can compete per bracket in a three game set.
+Double Elimination Singles - People compete until they lose twice. Four people can compete per bracket in a three game set.
 Super Bracket - 64 people compete in a bracket that lasts 6 games. Ideal for marathon tournaments.`,
 }

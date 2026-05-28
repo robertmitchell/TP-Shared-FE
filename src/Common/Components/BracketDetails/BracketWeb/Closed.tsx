@@ -57,7 +57,7 @@ export const Closed = (props: Props) => {
         eventData={eventData}
       />
 
-      {bracketType === 'Double Elimination' && loserWeb !== null && (
+      {bracketType === 'Double Elimination Singles' && loserWeb !== null && (
         <Web
           loserBracket
           eventBracket={eventBracket}

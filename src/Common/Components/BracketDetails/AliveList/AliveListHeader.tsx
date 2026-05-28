@@ -56,7 +56,7 @@ export const AliveListHeader = (props: Props) => {
           2nd Place <br /> <span className="text-blue-600">(blue = tie)</span>
         </div>
 
-        {bracketType === 'Double Elimination' && (
+        {bracketType === 'Double Elimination Singles' && (
           <>
             <div className="table-cell p-3">
               3rd Place <br />

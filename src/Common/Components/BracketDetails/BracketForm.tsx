@@ -53,7 +53,7 @@ export const BracketForm = (props: Props) => {
   )
 
   const isDES =
-    eventData.brackets[bIndex]?.bracketType === 'Double Elimination'
+    eventData.brackets[bIndex]?.bracketType === 'Double Elimination Singles'
   const isOpen =
     eventData.brackets[bIndex]?.status === BracketStatus.Not_Shuffled
 
@@ -348,7 +348,7 @@ export const BracketForm = (props: Props) => {
           </div>
 
           {eventData.brackets[bIndex].bracketType ===
-            'Double Elimination' && (
+            'Double Elimination Singles' && (
             <div className="grid grid-cols-6 gap-6 my-4 mx-2 sm:mx-0">
               <TextInput
                 type="number"
