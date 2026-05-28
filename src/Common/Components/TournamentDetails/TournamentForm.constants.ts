@@ -27,15 +27,9 @@ The player with the most points wins.`,
 
 Singles - Players compete individually.
 
-Doubles - Two people compete as a team. 
-
-Trios - Three people compete as a team.
-
 Teams - Players compete as a group.
 
-Mystery Doubles - Single bowlers are randomly put into teams of two. The pair with the highest score wins.
-
-Love Doubles - Single bowlers are matched up with every bowler of the opposite sex ,The highest male and female scores combined win. 
+Round Robin Singles - Players are matched with all other players and the highest combined score wins.
 
 Match Play - Players are matched with a different player for each round.
 Winners are determined by either most points won (winning score in a game is worth 1 point)
