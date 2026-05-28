@@ -29,7 +29,6 @@ export const getEmptyBracket = (): BracketFormData => {
     prizes: '',
     rules: '',
     secondPayout: 0,
-    format: '',
     sport: '',
     status: BracketStatus.Not_Shuffled,
     teamCount: 0,

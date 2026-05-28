@@ -13,7 +13,6 @@ import {
   bracketNumPlayersDES,
   bracketOptions,
   bracketScoringTypes,
-  bracketFormatTypes,
 } from './BracketForm.types'
 import { BRACKET_TEXT } from '@/CreateEvent/CreateEvent.constants'
 
@@ -178,19 +177,6 @@ export const BracketForm = (props: Props) => {
                   draft.brackets[bIndex].basedOnScore = e.target.valueAsNumber
                 })
               }
-            />
-
-            <RadioGroup
-              isEditing={isEditing}
-              labelText="Format"
-              items={bracketFormatTypes}
-              value={eventData.brackets[bIndex].format}
-              onChange={(e) =>
-                setEventData((draft) => {
-                  draft.brackets[bIndex].format = e.target.value
-                })
-              }
-              vertical
             />
 
             <TextInput

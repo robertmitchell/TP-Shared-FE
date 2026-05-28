@@ -40,7 +40,6 @@ export type BracketFormData = {
   prizes: string
   rules: string
   secondPayout: number
-  format: string
   sport: string
   status: BracketStatus
   teamCount: number
@@ -75,13 +74,6 @@ export const bracketNumPlayers = ['2', '4', '8', '16', '32', '64', '128', '256']
 export const bracketNumPlayersDES = ['2', '4', '8']
 
 export const bracketScoringTypes = ['Standard', 'Reverse', 'Mystery']
-
-export const bracketFormatTypes = [
-  'Standard 8 man 1/2/3',
-  'Eliminator',
-  'Reverse',
-  'Mystery Score Brackets',
-]
 
 export type BracketWeb = {
   id: string

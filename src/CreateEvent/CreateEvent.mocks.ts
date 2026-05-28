@@ -32,7 +32,6 @@ export const createEventMockData: EventData = {
       prizes: '20, 15',
       rules: 'USBC Bracket Rules',
       secondPayout: 10,
-      format: 'Standard 8 man 1/2/3',
       sport: 'Bowling',
       status: BracketStatus.Not_Shuffled,
       teamCount: 0,
@@ -42,7 +41,6 @@ export const createEventMockData: EventData = {
       age: 'Adults',
       id: 'B2',
       name: 'Singles Handicap Bracket',
-      format: 'Standard 8 man 1/2/3',
       sport: 'Bowling',
       description: 'An 8-man singles handicap bowling bracket',
       rules: 'USBC Bracket Rules',
@@ -135,7 +133,6 @@ export const createEventMockData: EventData = {
     {
       id: 'B5',
       name: 'Team Scratch Bracket',
-      format: 'Standard 8 man 1/2/3',
       sport: 'Bowling',
       description: 'A team scratch bowling bracket',
       rules: 'USBC Bracket Rules',
@@ -167,7 +164,6 @@ export const createEventMockData: EventData = {
     {
       id: 'B6',
       name: 'Team Handicap Bracket',
-      format: 'Standard 8 man 1/2/3',
       sport: 'Bowling',
       description: 'A team handicap bowling bracket',
       rules: 'USBC Bracket Rules',
