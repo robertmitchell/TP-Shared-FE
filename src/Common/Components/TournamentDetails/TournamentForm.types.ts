@@ -34,6 +34,7 @@ export type TournamentFormData = {
  */
 export const tournamentOptions = [
   'Singles',
+  'Doubles',
   'Teams',
   'Round Robin Singles',
   'Match Play Singles',
