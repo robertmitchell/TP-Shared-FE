@@ -182,6 +182,7 @@ export const BracketForm = (props: Props) => {
             <TextInput
               isEditing={isEditing}
               labelText="Sport"
+              placeholder="e.g. Bowling, Soccer, Golf"
               value={eventData.brackets[bIndex].sport}
               onChange={(e) =>
                 setEventData((draft) => {

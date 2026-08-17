@@ -53,17 +53,19 @@ export enum BracketStatus {
 }
 
 export type BracketType =
-  | 'Double Elimination Singles'
-  | 'Eliminator'
   | 'Singles'
+  | 'Doubles'
+  | 'Eliminator'
   | 'Teams'
+  | 'Double Elimination Singles'
 
 export const bracketOptions = [
   // 'Baker'
-  'Double Elimination Singles',
-  'Eliminator',
   'Singles',
+  'Doubles',
+  'Eliminator',
   'Teams',
+  'Double Elimination Singles',
 ]
 
 export const bracketNumPlayers = ['2', '4', '8', '16', '32', '64', '128', '256']
